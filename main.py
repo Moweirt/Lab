@@ -3,13 +3,14 @@ import streamlit as st
 import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.animation import FuncAnimation
+import csv
 
 @st.cache
 def load_dataset(data_link):
     dataset = pd.read_csv(data_link)
     return dataset
 
-lab_data = load_dataset('Parametrs.csv')
+lab_data = load_dataset('https://raw.githubusercontent.com/Moweirt/Lab/main/Parametrs.csv')
 
 ##titanic_link = 'https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv'
 ##titanic_data = load_dataset(titanic_link)
@@ -44,30 +45,27 @@ st.markdown("Колебательный процесс в системе мож�
 st.markdown("## Упражнение")
 st.markdown("### Изучение зависимости периода колебаний от жесткости пружины и массы груза")
 
-par_columns = st.columns(5)
-par_rig = par_columns[0].number_input("Жесткость пружины", value=lab_data['Rig'].max())
-par_mass = par_columns[1].number_input("Масса груза", value=lab_data['Mass'].max())
-par_rad = par_columns[2].number_input("Радиус шарика", value=lab_data['Rad'].max())
-par_vis = par_columns[3].number_input("Динамическая вязкость жидкости", value=lab_data['Vis'].max())
-par_ff = par_columns[4].number_input("Частота кадров", value=lab_data['FF'].max())
-
-'''
-par1_columns = st.columns(2)
-par_rig = par1_columns[0].number_input("Жесткость пружины", value=titanic_data['age'].min())
-par_mass = par1_columns[1].number_input("Масса груза", value=titanic_data['age'].max())
-
+par_columns = st.columns(3)
+par_rig = par_columns[0].number_input("Жесткость пружины", value=40)
+par_mass = par_columns[1].number_input("Масса груза", value=0.1)
+par_rad = par_columns[2].number_input("Радиус шарика", value=0.01)
 par2_columns = st.columns(2)
-par_rad = par2_columns[0].number_input("Радиус", value=titanic_data['age'].min())
-par_vis = par2_columns[1].number_input("Динамическая вязкость жидкости", value=titanic_data['age'].max())
+par_vis = par_columns[0].number_input("Динамическая вязкость жидкости", value=0.9)
+par_ff = par_columns[1].number_input("Частота кадров", value=4)
 
-optionals = st.expander("Скорость анимации", True)
-ff = optionals.slider(
-    "Скорость",
-    min_value=float(titanic_data['fare'].min()),
-    max_value=float(titanic_data['fare'].max())
-)
-'''
-#T = 2*np.pi*np.sqrt(par_mass/par_rig)
+#par1_columns = st.columns(2)
+#par_rig = par1_columns[0].number_input("Жесткость пружины", value=titanic_data['age'].min())
+#par_mass = par1_columns[1].number_input("Масса груза", value=titanic_data['age'].max())
+#par2_columns = st.columns(2)
+#par_rad = par2_columns[0].number_input("Радиус", value=titanic_data['age'].min())
+#par_vis = par2_columns[1].number_input("Динамическая вязкость жидкости", value=titanic_data['age'].max())
+#optionals = st.expander("Скорость анимации", True)
+#ff = optionals.slider(
+#    "Скорость",
+#   min_value=float(titanic_data['fare'].min()),
+#   max_value=float(titanic_data['fare'].max())
+#)
+
 
 #m = float(input("введите массу (килограмм)"))
 m = par_mass
