@@ -11,8 +11,6 @@ def load_dataset(data_link):
 
 lab_data = load_dataset('https://raw.githubusercontent.com/Moweirt/Lab/main/Parametrs.csv')
 
-##titanic_link = 'https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv'
-##titanic_data = load_dataset(titanic_link)
 
 st.title("Интерактивная лабораторная работа по изучению затухающих колебаний и жидкого трения")
 st.markdown("## Идея эксперимента\n")
@@ -45,24 +43,17 @@ st.markdown("## Упражнение")
 st.markdown("### Изучение зависимости периода колебаний от жесткости пружины и массы груза")
 
 par_columns = st.columns(3)
-par_rig = par_columns[0].number_input("Жесткость пружины", value=40)
-par_mass = par_columns[1].number_input("Масса груза", value=0.1)
-par_rad = par_columns[2].number_input("Радиус шарика", value=0.01)
+par_rig = par_columns[0].number_input("Жесткость пружины(H/m)", value=40)
+par_mass = par_columns[1].number_input("Масса груза(kg)", value=0.1)
+par_rad = par_columns[2].number_input("Радиус шарика(m)", value=0.01)
 par2_columns = st.columns(2)
-par_vis = par_columns[0].number_input("Динамическая вязкость жидкости", value=0.9)
-par_ff = par_columns[1].number_input("Частота кадров", value=4)
+par_vis = par_columns[0].number_input("Динамическая вязкость жидкости(P/s)", value=0.9)
+par_ff = par_columns[1].number_input("Частота кадров(FPS)", value=4)
 
-
-
-#m = float(input("введите массу (килограмм)"))
 m = par_mass
-#r = float(input("введите радиус (метр)"))
 r = par_rad
-#k = float(input("введите коэф жесткости пружины (ньютон/метр)"))
 k = par_rig
-#y = float(input("введите динамическую вязкость (паскаль/сек)"))
 y = par_vis
-#s = float(input("введите скорость (от 0.1 до 10)"))
 s = par_ff
 
 plt.style.use('seaborn-pastel')
@@ -71,14 +62,10 @@ fig = plt.figure()
 ax = plt.axes(xlim=(0, 4), ylim=(-3 , 3))
 line, = ax.plot([], [], lw=1)
 
-
 w0 = np.sqrt(k/m)
 h = 6 * np.pi * r * y
 v = h/(m*2)
 w = w0/10
-
-#if (v >=0.018): print("Декремент большой - быстрое затухание");
-#if (v < 0.018): print("Декремент маленький - медленное затухание");
 
 def init():
     line.set_data([], [])
@@ -101,5 +88,3 @@ anim = FuncAnimation(fig, animate, init_func=init,
 anim.save('animation.gif', writer='pillow')
 
 st.image("animation.gif")
-
-#st.write(f"Период колебаний: {T}")
