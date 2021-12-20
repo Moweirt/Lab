@@ -3,7 +3,6 @@ import streamlit as st
 import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.animation import FuncAnimation
-import csv
 
 @st.cache
 def load_dataset(data_link):
@@ -53,18 +52,6 @@ par2_columns = st.columns(2)
 par_vis = par_columns[0].number_input("Динамическая вязкость жидкости", value=0.9)
 par_ff = par_columns[1].number_input("Частота кадров", value=4)
 
-#par1_columns = st.columns(2)
-#par_rig = par1_columns[0].number_input("Жесткость пружины", value=titanic_data['age'].min())
-#par_mass = par1_columns[1].number_input("Масса груза", value=titanic_data['age'].max())
-#par2_columns = st.columns(2)
-#par_rad = par2_columns[0].number_input("Радиус", value=titanic_data['age'].min())
-#par_vis = par2_columns[1].number_input("Динамическая вязкость жидкости", value=titanic_data['age'].max())
-#optionals = st.expander("Скорость анимации", True)
-#ff = optionals.slider(
-#    "Скорость",
-#   min_value=float(titanic_data['fare'].min()),
-#   max_value=float(titanic_data['fare'].max())
-#)
 
 
 #m = float(input("введите массу (килограмм)"))
