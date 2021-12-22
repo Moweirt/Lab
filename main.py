@@ -8,6 +8,8 @@ from matplotlib.animation import FuncAnimation
 
 #Alex`s new code
 
+#sofia
+
 @st.cache
 def load_dataset(data_link):
     dataset = pd.read_csv(data_link)
