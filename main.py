@@ -94,3 +94,48 @@ anim = FuncAnimation(fig, animate, init_func=init,
 anim.save('animation.gif', writer='pillow')
 
 st.image("animation.gif")
+
+# добавлено упражение(не меняю переменные)
+
+# тут начинать писать фронтэнд по упражнению
+
+plt.style.use('seaborn-pastel')
+
+fig = plt.figure()
+ax = plt.axes(xlim=(0, 4), ylim=(-3 , 3))
+line_err, = ax.plot([], [], lw=1)
+
+k = 45  # Жесткость пружины(H/m)
+m = 0.080  # Масса груза(kg)
+r = 0.05  # Радиус шарика(m)
+y = 0.7  # Динамическая вязкость жидкости(P/s) - берем глицерин
+
+
+w0 = np.sqrt(k/m)
+h = 6 * np.pi * r * y
+v_err = h/(m*2)
+w_err = w0/10
+
+
+def init_err():
+    line_err.set_data([], [])
+    return line_err,
+
+def animate_err(i):
+
+    x = np.linspace(0, 4, 100)
+
+    y_err = np.random.random(100)
+    y = np.exp(-v_err * x) * np.sin( 2 * np.pi * w_err * (x - 0.01 ) ) + y_err
+
+
+    line_err.set_data(x, y)
+    return line_err,
+
+
+anim = FuncAnimation(fig, animate_err, init_func=init_err,
+                     frames=200, interval=20, blit=True)
+
+anim.save('error.gif', writer='pillow')
+
+st.image("error.gif")
