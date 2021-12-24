@@ -127,40 +127,39 @@ st.markdown(" === ")
 plt.style.use('seaborn-pastel')
 
 fig = plt.figure()
-ax = plt.axes(xlim=(0, 4), ylim=(-3 , 3))
-line_err, = ax.plot([], [], lw=1)
+ax_1 = plt.axes(xlim=(0, 20), ylim=(-3 , 3))
+line_1, = ax_1.plot([], [], lw=1)
 
-k = 45  # Жесткость пружины(H/m)
-m = 0.080  # Масса груза(kg)
-r = 0.05  # Радиус шарика(m)
-y = 0.7  # Динамическая вязкость жидкости(P/s) - берем глицерин
+k = 12  # Жесткость пружины(H/m)
+m = 0.140  # Масса груза(kg)
 
 
 w0 = np.sqrt(k/m)
-h = 6 * np.pi * r * y
-v_err = h/(m*2)
-w_err = w0/10
+#b_1 = float(input('коэф перед скоростью'))
+b_1 = 0.002
+w_1 = w0/10
+v_1 = b_1/(m*2)
+
+def init_1():
+    #line_err.set_data([], [])
+    return line_1,
+
+def animate_1(i):
+
+    x = np.linspace(0, 20, 200)
+
+    y = np.exp(-v_1 * x) * np.sin( 2 * np.pi * w_1 * (x - 0.01 * i ) )
 
 
-def init_err():
-    line_err.set_data([], [])
-    return line_err,
-
-def animate_err(i):
-
-    x = np.linspace(0, 4, 100)
-
-    y_err = np.random.random(100)
-    y = np.exp(-v_err * x) * np.sin( 2 * np.pi * w_err * (x - 0.01 ) ) + y_err
+    line_1.set_data(x, y)
+    return line_1,
 
 
-    line_err.set_data(x, y)
-    return line_err,
-
-
-anim = FuncAnimation(fig, animate_err, init_func=init_err,
+anim = FuncAnimation(fig, animate_1, init_func=init_1,
                      frames=200, interval=20, blit=True)
 
-anim.save('error.gif', writer='pillow')
+anim.save('your.gif', writer='pillow')
 
-st.image("error.gif")
+st.image("your.gif")
+
+if ((b_1 < 0.030)and(b_1 > 0.010)) : () #вывод молодец
