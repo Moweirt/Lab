@@ -379,4 +379,5 @@ st.image("your.gif")
 resp2 = 0
 
 if ((b_1 < 0.030)and(b_1 > 0.010)): resp2 += 5
-    st.success(f"Всё правильно! + ( {resp2} балл(а) )")
+
+st.success(f"Всё правильно! + ( {resp2} балл(а) )")
