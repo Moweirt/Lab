@@ -48,7 +48,7 @@ st.latex("х(t) = A cos(ω0t + φ0")
 
 st.markdown("Здесь A — амплитуда колебаний; ω0 — круговая частота (T — период); t — время; φ0 — начальная фаза колебаний.")
 
-st.markdown("")
+st.markdown("popo")
 
 st.markdown("")
 
