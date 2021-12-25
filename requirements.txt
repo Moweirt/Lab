@@ -1,12 +1,12 @@
-altair                4.1.0
-argon2-cffi           21.3.0
-argon2-cffi-bindings  21.2.0
-astor                 0.8.1
-attrs                 21.2.0
-backcall              0.2.0
-base58                2.1.1
-bleach                4.1.0
-blinker               1.4
+altair==4.1.0
+argon2-cffi==421.3.0
+argon2-cffi-bindings==421.2.0
+astor==40.8.1
+attrs==421.2.0
+backcall==40.2.0
+base58==42.1.1
+bleach==44.1.0
+blinker==41.4
 cachetools            4.2.4
 certifi               2021.10.8
 cffi                  1.15.0
@@ -17,6 +17,7 @@ cycler                0.11.0
 debugpy               1.5.1
 decorator             5.1.0
 defusedxml            0.7.1
+docopt                0.6.2
 entrypoints           0.3
 fonttools             4.28.4
 gitdb                 4.0.9
@@ -51,6 +52,7 @@ parso                 0.8.3
 pickleshare           0.7.5
 Pillow                8.4.0
 pip                   21.3.1
+pipreqs               0.4.11
 prometheus-client     0.12.0
 prompt-toolkit        3.0.24
 protobuf              3.19.1
@@ -89,3 +91,4 @@ wcwidth               0.2.5
 webencodings          0.5.1
 wheel                 0.36.2
 widgetsnbextension    3.5.2
+yarg                  0.1.9
